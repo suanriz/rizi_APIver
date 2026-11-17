@@ -16,9 +16,6 @@ const SHOP_TYPE = SHOP_INFO_TYPE.filter(x => x.type !== 'mail')
         v-for="item in SHOP_INFO"
         :key="item.name"
         class="max-w-[282px] infoSm:max-w-full infoSm:w-full flex flex-col infoSm:flex-row md:flex-col not-first:mt-[20px] infoSm:not-first:mt-0"
-        :data-aos="item.aos"
-        data-aos-duration="700"
-        data-aos-easing="ease-in-sine"
       >
         <div class="w-full infoSm:w-[55%] md:w-full infoSm:mr-[8px] flex">
           <ResponsiveImg img-class="w-full w-[282px] aspect-[282/220]" :src="item.img" :alt="item.name" />

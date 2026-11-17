@@ -29,7 +29,7 @@ export default defineNuxtConfig({
     '@/assets/global.css'
   ],
   app: {
-    baseURL: isProd ? '/rizi/' : '/',
+    baseURL: isProd ? '/rizi_APIver/' : '/',
   },
   critters: {
     config: {
