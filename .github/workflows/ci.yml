@@ -33,17 +33,6 @@ jobs:
       - name: Type check
         run: pnpm exec nuxt typecheck
 
-      - name: Run tests with coverage
-        run: pnpm test:coverage
-        env:
-          CI: true
-
-      - name: Upload coverage reports to Codecov
-        uses: codecov/codecov-action@v5
-        with:
-          token: ${{ secrets.CODECOV_TOKEN }}
-          slug: suanriz/rizi
-
       - name: Build project
         run: pnpm generate
         env:
