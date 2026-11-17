@@ -16,6 +16,7 @@ const isNavOpen = ref(false)
 
 const handleUserIconClick = () => {
   if (!isAuthenticated.value) {
+    loginRedirect.value = '/user'
     showLoginModal.value = true
   } else {
     navigateTo('/user')

@@ -34,7 +34,9 @@ export const useCartStore = defineStore('cart', {
     requireLogin () {
       const { token } = this.getRequestOptions()
       if (token) return true
-      useAuth().showLoginModal.value = true
+      const { showLoginModal, loginRedirect } = useAuth()
+      loginRedirect.value = null
+      showLoginModal.value = true
       return false
     },
 

@@ -64,9 +64,9 @@ const handleSubmit: FormProps['onFinish'] = async () => {
       message.success('註冊成功')
     }
     isOpen.value = false
-    const redirectTo = loginRedirect.value || '/user'
+    const redirectTo = loginRedirect.value
     loginRedirect.value = null
-    await navigateTo(redirectTo)
+    if (redirectTo) await navigateTo(redirectTo)
   } catch (error) {
     message.error(getErrorMessage(error))
   } finally {
