@@ -1,0 +1,522 @@
+{
+  "banners": [
+    {
+      "id": 1,
+      "img": "img/banner/coffee",
+      "link": "store",
+      "alt": "coffee",
+      "sequence": 1,
+      "status": true
+    },
+    {
+      "id": 2,
+      "img": "img/banner/drink",
+      "link": "menu/list/3/",
+      "alt": "drink",
+      "sequence": 2,
+      "status": true
+    },
+    {
+      "id": 3,
+      "img": "img/banner/dessert",
+      "alt": "dessert",
+      "sequence": 3,
+      "status": true
+    }
+  ],
+  "news": [
+    {
+      "id": 7,
+      "title": "週年慶全店88折回饋",
+      "introduction": "慶祝好日子咖啡輕食三週年，全店飲品與輕食一律88折，歡迎來店同樂！",
+      "img": "img/newsView/id3",
+      "type": 1,
+      "create_at": "2026-10-20 09:00:00+08",
+      "status": true
+    },
+    {
+      "id": 6,
+      "title": "新品上市：焦糖瑪奇朵特調版",
+      "introduction": "獨家比例調配的焦糖瑪奇朵，香甜不膩，咖啡迷不容錯過！",
+      "img": "img/newsView/id2",
+      "type": 2,
+      "create_at": "2026-09-15 14:30:00+08",
+      "status": true
+    },
+    {
+      "id": 5,
+      "title": "夏季限定冰咖啡買一送一",
+      "introduction": "炎炎夏日，來杯冰涼咖啡最消暑！指定冰咖啡買一送一，限時優惠快來搶！",
+      "img": "img/newsView/id1",
+      "type": 1,
+      "create_at": "2026-07-01 10:00:00+08",
+      "status": true
+    },
+    {
+      "id": 4,
+      "title": "憑會員帳號，享經典拿鐵、經典黑咖啡88折",
+      "introduction": "咖啡是最溫暖的顏色，最療癒的能量飲，對抗疫情期間，大家都辛苦了，讓我們一同攜手振興未來，開心喝咖啡",
+      "img": "img/newsView/id4",
+      "type": 1,
+      "create_at": "2026-08-11",
+      "status": true
+    },
+    {
+      "id": 3,
+      "title": "好日子咖啡輕食x知名植物奶品牌OATLY聯名",
+      "introduction": "OATLY燕麥奶選用來自北歐優質燕麥製成，不添加防腐劑或甜味劑，打造美味健康的植物奶！",
+      "img": "img/newsView/id3",
+      "type": 2,
+      "create_at": "2026-02-27 22:53:00+08",
+      "status": true
+    },
+    {
+      "id": 2,
+      "title": "12月會員日，享年度最低85折優惠",
+      "introduction": "所有來客消費咖啡系列任一品項，享買一送一優惠，搭配指定甜點享九折優惠！",
+      "img": "img/newsView/id2",
+      "type": 1,
+      "create_at": "2026-02-27 22:53:00+08",
+      "status": true
+    },
+    {
+      "id": 1,
+      "title": "11月限定！國際咖啡節優惠享不完",
+      "introduction": "所有來客消費咖啡系列任一品項，享買一送一優惠，搭配指定甜點享九折優惠！",
+      "img": "img/newsView/id1",
+      "type": 1,
+      "create_at": "2026-02-27 22:53:00+08",
+      "status": true
+    }
+  ],
+  "menu": [
+    {
+      "id": 1,
+      "name": "冰心莓果優格",
+      "link": "/menu/list/1",
+      "img": "img/menuGoods/cakeB",
+      "indexImg": "img/indexMenu/fruitYogurt",
+      "indexImagePCSize": [
+        287,
+        496
+      ],
+      "indexImagePhoneSize": [
+        186,
+        332
+      ],
+      "price": 120,
+      "type": 3,
+      "tag": [],
+      "detail": {
+        "imgs": [
+          "img/menuGoods/cakeB",
+          "img/menuGoods/cakeA",
+          "img/menuGoods/cakeC",
+          "img/menuGoods/cakeD"
+        ],
+        "features": {
+          "flavor": "選用香水草莓，果香濃郁且酸甜平衡，搭配細緻滑順的優格基底，每一口都清爽無負擔",
+          "features": "不含香料、色素與化學添加物",
+          "ingredients": "來自苗栗武榮草莓園，採用無農藥、無化肥的安心栽培方式",
+          "shelfLife": "冷藏2天內食用完畢"
+        },
+        "nutritionFacts": [
+          "1份 (362gl) ",
+          "815",
+          "56",
+          "18(33%)",
+          "11(73%)",
+          "726(36%)"
+        ]
+      }
+    },
+    {
+      "id": 2,
+      "name": "義式黑巧拿鐵",
+      "link": "/menu/list/2",
+      "img": "img/menuGoods/cakeH",
+      "indexImg": "img/indexMenu/chocolateLatte",
+      "indexImagePCSize": [
+        347,
+        205
+      ],
+      "indexImagePhoneSize": [
+        377,
+        223
+      ],
+      "price": 160,
+      "type": 1,
+      "tag": [],
+      "detail": {
+        "imgs": [
+          "img/menuGoods/cakeH",
+          "img/menuGoods/cakeA",
+          "img/menuGoods/cakeC",
+          "img/menuGoods/cakeD"
+        ],
+        "features": {
+          "flavor": "濃郁的義式巧克力與香醇咖啡完美結合，入口香甜，餘韻醇厚",
+          "features": "使用高品質巧克力與精品咖啡豆，保證純正風味",
+          "ingredients": "精選義大利進口巧克力粉，搭配手工烘焙咖啡豆與新鮮牛奶",
+          "shelfLife": "冷藏2天內食用完畢"
+        },
+        "nutritionFacts": [
+          "1杯 (350ml)",
+          "250",
+          "30",
+          "5(10%)",
+          "3(15%)",
+          "50(2%)"
+        ]
+      }
+    },
+    {
+      "id": 3,
+      "name": "清爽西瓜特調",
+      "link": "/menu/list/3",
+      "img": "img/menuGoods/cakeG",
+      "indexImg": "img/indexMenu/refreshingWatermelonSpecial",
+      "indexImagePCSize": [
+        386,
+        205
+      ],
+      "indexImagePhoneSize": [
+        205,
+        109
+      ],
+      "price": 100,
+      "type": 2,
+      "tag": [
+        1
+      ],
+      "detail": {
+        "imgs": [
+          "img/menuGoods/cakeG",
+          "img/menuGoods/cakeA",
+          "img/menuGoods/cakeC",
+          "img/menuGoods/cakeD"
+        ],
+        "features": {
+          "flavor": "清甜多汁的西瓜風味，結合微酸的檸檬特調，帶來夏日清涼口感",
+          "features": "不含人工色素與香料，保留水果原汁原味",
+          "ingredients": "採用新鮮西瓜汁與天然檸檬汁調製而成，無化學添加",
+          "shelfLife": "冷藏2天內食用完畢"
+        },
+        "nutritionFacts": [
+          "1杯 (400ml)",
+          "120",
+          "24",
+          "1(2%)",
+          "0(0%)",
+          "10(0%)"
+        ]
+      }
+    },
+    {
+      "id": 4,
+      "name": "熱壓蘑菇芝士",
+      "link": "/menu/list/4",
+      "img": "img/menuGoods/cakeJ",
+      "indexImg": "img/indexMenu/mushroomSandwich",
+      "indexImagePCSize": [
+        219,
+        282
+      ],
+      "indexImagePhoneSize": [
+        262,
+        338
+      ],
+      "price": 100,
+      "type": 4,
+      "tag": [
+        1
+      ],
+      "detail": {
+        "imgs": [
+          "img/menuGoods/cakeJ",
+          "img/menuGoods/cakeA",
+          "img/menuGoods/cakeC",
+          "img/menuGoods/cakeD"
+        ],
+        "features": {
+          "flavor": "濃郁芝士香搭配嫩滑蘑菇，麵包酥脆，內餡濃厚，層次豐富",
+          "features": "選用優質乳酪與新鮮蘑菇，無添加人工調味",
+          "ingredients": "採用現烤麵包與手工調配餡料，健康美味",
+          "shelfLife": "冷藏2天內食用完畢"
+        },
+        "nutritionFacts": [
+          "1份 (280g)",
+          "420",
+          "22",
+          "8(16%)",
+          "5(25%)",
+          "360(18%)"
+        ]
+      }
+    },
+    {
+      "id": 5,
+      "name": "莓果幕斯塔",
+      "link": "/menu/list/5",
+      "img": "img/menuGoods/cakeE",
+      "indexImg": "img/indexMenu/berryMousta",
+      "indexImagePCSize": [
+        337,
+        282
+      ],
+      "indexImagePhoneSize": [
+        268,
+        224
+      ],
+      "price": 130,
+      "type": 3,
+      "tag": [
+        1
+      ],
+      "detail": {
+        "imgs": [
+          "img/menuGoods/cakeE",
+          "img/menuGoods/cakeA",
+          "img/menuGoods/cakeC",
+          "img/menuGoods/cakeD"
+        ],
+        "features": {
+          "flavor": "濃郁的莓果風味，搭配柔滑的慕斯質地，入口即化，酸甜平衡，層次豐富",
+          "features": "不含香料、色素與化學添加物，天然食材製作",
+          "ingredients": "採用新鮮莓果，結合優質乳品，製作出綿密的慕斯口感",
+          "shelfLife": "冷藏2天內食用完畢"
+        },
+        "nutritionFacts": [
+          "1份 (350g)",
+          "690",
+          "45",
+          "12(24%)",
+          "8(50%)",
+          "620(28%)"
+        ]
+      }
+    },
+    {
+      "id": 6,
+      "name": "法式馬卡龍",
+      "link": "/menu/list/6",
+      "img": "img/menuGoods/cakeK",
+      "indexImg": "img/indexMenu/macaron",
+      "indexImagePCSize": [
+        168,
+        138
+      ],
+      "indexImagePhoneSize": [
+        186,
+        153
+      ],
+      "price": 130,
+      "type": 3,
+      "tag": [],
+      "detail": {
+        "imgs": [
+          "img/menuGoods/cakeK",
+          "img/menuGoods/cakeA",
+          "img/menuGoods/cakeC",
+          "img/menuGoods/cakeD"
+        ],
+        "features": {
+          "flavor": "酥脆外殼搭配柔滑內餡，提供抹茶、香草、巧克力、草莓等多種口味，層次豐富，甜而不膩",
+          "features": "不含人工添加物，精選天然食材，每一口都充滿細膩手工風味",
+          "ingredients": "採用優質杏仁粉、新鮮蛋白與天然調味料製作，搭配多種風味內餡，口感絕佳",
+          "shelfLife": "冷藏2天內食用完畢"
+        },
+        "nutritionFacts": [
+          "1份 (280g)",
+          "530",
+          "25",
+          "10(20%)",
+          "6(40%)",
+          "480(22%)"
+        ]
+      }
+    },
+    {
+      "id": 7,
+      "name": "抹茶生乳捲",
+      "link": "/menu/list/7",
+      "img": "img/menuGoods/cakeF",
+      "indexImg": "img/indexMenu/matchaMilkRoll",
+      "indexImagePCSize": [
+        168,
+        138
+      ],
+      "indexImagePhoneSize": [
+        186,
+        153
+      ],
+      "price": 130,
+      "type": 3,
+      "tag": [],
+      "detail": {
+        "imgs": [
+          "img/menuGoods/cakeF",
+          "img/menuGoods/cakeA",
+          "img/menuGoods/cakeC",
+          "img/menuGoods/cakeD"
+        ],
+        "features": {
+          "flavor": "濃厚的靜岡抹茶香氣與柔滑的生乳餡相結合，微苦帶甜，尾韻悠長",
+          "features": "不含人工添加物，選用天然抹茶粉，健康美味兼具",
+          "ingredients": "採用日本靜岡抹茶粉，搭配優質鮮奶油與低筋麵粉製作，口感細緻",
+          "shelfLife": "冷藏2天內食用完畢"
+        },
+        "nutritionFacts": [
+          "1份 (300g)",
+          "530",
+          "25",
+          "10(20%)",
+          "6(40%)",
+          "480(22%)"
+        ]
+      }
+    },
+    {
+      "id": 8,
+      "name": "靜岡抹茶拿鐵",
+      "link": "/menu/list/8",
+      "img": "img/menuGoods/cakeI",
+      "indexImg": "img/menuGoods/cakeI",
+      "indexImagePCSize": [
+        580,
+        580
+      ],
+      "indexImagePhoneSize": [
+        280,
+        280
+      ],
+      "price": 160,
+      "type": 1,
+      "tag": [],
+      "detail": {
+        "imgs": [
+          "img/menuGoods/cakeI",
+          "img/menuGoods/cakeA",
+          "img/menuGoods/cakeC",
+          "img/menuGoods/cakeD"
+        ],
+        "features": {
+          "flavor": "清新細膩的抹茶香氣，結合濃郁的奶香，茶與奶的比例完美調和",
+          "features": "不添加人工甜味劑，選用高品質抹茶粉與鮮奶",
+          "ingredients": "採用日本靜岡抹茶粉，搭配新鮮牛奶，展現純粹自然風味",
+          "shelfLife": "冷藏2天內食用完畢"
+        },
+        "nutritionFacts": [
+          "1杯 (350ml)",
+          "180",
+          "20",
+          "6(12%)",
+          "4(20%)",
+          "60(3%)"
+        ]
+      }
+    }
+  ],
+  "orders": [
+    {
+      "id": "260111R5HU1NDQ",
+      "status": 1,
+      "totalPrice": 1320,
+      "create_at": "2026-01-11 11:11:11",
+      "shipped_at": null,
+      "completed_at": null,
+      "cancelled_at": null,
+      "items": [
+        {
+          "id": 12,
+          "name": "璀璨之星濾掛咖啡禮盒(18入) 隨機口味各3包",
+          "link": "/store/12",
+          "img": "img/storeGoods/coffeeK",
+          "price": 480,
+          "count": 1
+        },
+        {
+          "id": 8,
+          "name": "薩爾瓦多 黑蜜處理 Pacamara",
+          "link": "/store/8",
+          "img": "img/storeGoods/coffeeI",
+          "price": 280,
+          "count": 3
+        }
+      ]
+    },
+    {
+      "id": "260111R5HU1NDQ",
+      "status": 2,
+      "totalPrice": 560,
+      "create_at": "2026-01-11 10:12:16",
+      "shipped_at": "2026-01-12 10:50:44",
+      "completed_at": null,
+      "cancelled_at": null,
+      "items": [
+        {
+          "id": 8,
+          "name": "薩爾瓦多 黑蜜處理 Pacamara",
+          "link": "/store/8",
+          "img": "img/storeGoods/coffeeI",
+          "price": 280,
+          "count": 2
+        }
+      ]
+    },
+    {
+      "id": "260101R5HU1NDQ",
+      "status": 3,
+      "totalPrice": 710,
+      "create_at": "2026-01-01 11:23:08",
+      "shipped_at": "2026-01-03 09:11:45",
+      "completed_at": "2026-01-05 16:24:10",
+      "cancelled_at": null,
+      "items": [
+        {
+          "id": 6,
+          "name": "哥倫比亞 日曬 Pink Bourbon",
+          "link": "/store/6",
+          "img": "img/storeGoods/coffeeJ",
+          "price": 250,
+          "count": 1
+        },
+        {
+          "id": 5,
+          "name": "宏都拉斯 水洗 El Puente莊園",
+          "link": "/store/5",
+          "img": "img/storeGoods/coffeeH",
+          "price": 230,
+          "count": 2
+        }
+      ]
+    },
+    {
+      "id": "260101R5HU1NDB",
+      "status": 4,
+      "totalPrice": 710,
+      "create_at": "2026-01-01 10:02:34",
+      "shipped_at": "null",
+      "completed_at": "null",
+      "cancelled_at": "2026-01-01 11:15:13",
+      "items": [
+        {
+          "id": 6,
+          "name": "哥倫比亞 日曬 Pink Bourbon",
+          "link": "/store/6",
+          "img": "img/storeGoods/coffeeJ",
+          "price": 250,
+          "count": 1
+        },
+        {
+          "id": 5,
+          "name": "宏都拉斯 水洗 El Puente莊園",
+          "link": "/store/5",
+          "img": "img/storeGoods/coffeeH",
+          "price": 230,
+          "count": 2
+        }
+      ]
+    }
+  ]
+}

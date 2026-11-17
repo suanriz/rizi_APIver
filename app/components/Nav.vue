@@ -1,0 +1,261 @@
+<script lang="ts" setup>
+import { useRuntimeConfig, useRoute, navigateTo } from '#imports'
+import { computed, onBeforeUnmount, onMounted, ref, watch } from 'vue'
+
+import { useAuth } from '@/composables/useAuth'
+
+import { useCartStore } from '@/stores/cartStore'
+import { NAV_INFO } from '@/utils/constants'
+
+const { app: { baseURL } } = useRuntimeConfig()
+const route = useRoute()
+const { isAuthenticated, showLoginModal, loginRedirect, logout } = useAuth()
+const cartStore = useCartStore()
+const cartData = computed(() => cartStore.items.length)
+const isNavOpen = ref(false)
+
+const handleUserIconClick = () => {
+  if (!isAuthenticated.value) {
+    showLoginModal.value = true
+  } else {
+    navigateTo('/user')
+  }
+}
+
+const handleCartClick = () => {
+  if (isAuthenticated.value) {
+    navigateTo('/cart')
+    return
+  }
+  loginRedirect.value = '/cart'
+  showLoginModal.value = true
+}
+
+const handleResize = () => {
+  if (import.meta.client && window.innerWidth >= 1000 && isNavOpen.value) {
+    isNavOpen.value = false
+  }
+}
+
+watch(isNavOpen, (val) => {
+  if (import.meta.client) {
+    if (val) {
+      document.body.style.overflow = 'hidden'
+    } else {
+      document.body.style.overflow = ''
+    }
+  }
+})
+
+watch(
+  () => route.path,
+  () => isNavOpen.value = false
+)
+
+onMounted(() => {
+  requestIdleCallback?.(() => {
+    window.addEventListener('resize', handleResize)
+    handleResize()
+  })
+
+  if (route.query.login === 'true') {
+    if (typeof route.query.redirect === 'string' && route.query.redirect.startsWith('/')) {
+      loginRedirect.value = route.query.redirect
+    }
+    showLoginModal.value = true
+    const query = { ...route.query }
+    delete query.login
+    delete query.redirect
+    navigateTo({ path: route.path, query }, { replace: true })
+  }
+})
+
+onBeforeUnmount(() => {
+  if (import.meta.client) {
+    window.removeEventListener('resize', handleResize)
+    document.body.style.overflow = ''
+  }
+})
+</script>
+
+<template>
+  <header class="fixed w-full z-[var(--zIndexPopup)]">
+    <div class="absolute inset-0 bg-white/80 backdrop-blur-md shadow-[0_1px_1px_var(--gray)] -z-10" />
+    <div class="relative h-[70px] max-w-[1280px] m-auto flex justify-between items-center px-[4%] overflow-x-auto overflow-y-hidden no-scrollbar">
+      <button
+        id="navToggle"
+        class="hamburger shrink-0 w-[50px] h-[50px] relative cursor-pointer navFull:sr-only bg-transparent border-none appearance-none p-0 focus:outline-[var(--mainRed)]"
+        aria-label="開啟選單"
+        :aria-expanded="isNavOpen"
+        aria-controls="mainNav"
+        @click="isNavOpen = !isNavOpen"
+      />
+      <div class="navFull:mr-[45px] relative shrink-0">
+        <h1>
+          <NuxtLink to="/">
+            <span class="shine absolute w-[144px] h-[30px] overflow-hidden [mask-size:100%] after:content-[''] after:absolute after:top-[-50%] after:left-[-230%] after:w-[30px] after:h-[200%] after:bg-gradient-to-r after:from-transparent after:via-[#af1212c2] after:to-transparent after:rotate-90 after:pointer-events-none" :style="{ maskImage: `url(${baseURL}img/logo.webp)` }" />
+            <img
+              src="/img/logo.webp"
+              alt="RIZI COFE HOUSE"
+              fetchpriority="high"
+              class="w-[144px] h-[30px]"
+            >
+          </NuxtLink>
+        </h1>
+      </div>
+      <nav
+        id="mainNav"
+        class="fixed w-full top-[70px] transition-[left,opacity] duration-600 ease-in-out -left-full min-h-screen p-[0px_0px_35px_7%] border-t border-[var(--gray)] navFull:min-w-[476px] navFull:max-w-[700px] navFull:min-h-auto navFull:static navFull:opacity-100 navFull:p-0 navFull:border-none bg-white/80 backdrop-blur-md navFull:bg-transparent navFull:backdrop-blur-none"
+        :class="[ isNavOpen ? '!left-0 z-[var(--zIndexOverlay)]' : '' ]"
+      >
+        <ul class="navFull:flex navFull:justify-evenly">
+          <li
+            v-for="(item, index) in NAV_INFO"
+            :key="item.label + index"
+            class="border-b border-[var(--gray)] h-full navFull:border-none navFull:flex navFull:m-0 navFull:text-[var(--mainRed)]"
+          >
+            <NuxtLink
+              :to="item.link"
+              :class="[
+                'scrollTextParent block p-[20px] no-underline text-[16px] leading-[16px] tracking-[.2em] font-[400] hover:!text-[var(--mainRed)] navFull:text-[16px] navFull:font-[400] navFull:p-0',
+                item.link === route.path ? '!text-[var(--mainRed)]' : '!text-[var(--mainTxt)]'
+              ]"
+            >
+              <span class="scrollText navFull:text-center">
+                <span class="scrollTextItem">{{ item.label }}</span>
+                <span class="scrollTextItem navFull:tracking-[0.05em]" aria-hidden="true">
+                  {{ item.link.slice(1).toUpperCase() }}
+                </span>
+              </span>
+            </NuxtLink>
+          </li>
+        </ul>
+      </nav>
+      <div class="flex navFull:ml-[45px] brandOneCol:space-x-1">
+        <NuxtLink
+          to="/cart"
+          aria-label="購物車"
+          class="navFull:h-full navFull:flex"
+          @click.prevent="handleCartClick"
+        >
+          <a-badge :offset="[-3, 5]" :count="cartData" class="align-top">
+            <svg
+              version="1.2"
+              baseProfile="tiny"
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 155 136"
+              class="w-[43px] aspect-[43/38] navFull:h-[27px] navFull:w-[30.76px] navFull:mr-0 transition-all duration-300 hover:scale-120 hover:text-[var(--mainRed)] leading-none"
+              :class="[ route.path === '/cart' ? '!text-[var(--mainRed)]' : '!text-[var(--mainTxt)]' ]"
+              fill="currentColor"
+              aria-hidden="true"
+              role="img"
+              aria-label="購物車"
+            >
+              <path
+                d="M52.4 115.3c-1.1 5-5.8 8.6-11 8.5-5.3-.1-9.8-3.6-10.6-8.8-.8-4.3.4-8 3.9-10.9.3-.3.5-.6.5-1V32.4c0-.5-.1-.8-.5-1-5.8-3.8-11.5-7.5-17.2-11.4-2.3-1.3-3-3.4-2.1-5.4 1.1-2.4 4-3.1 6.4-1.5 1.6 1 3.3 2.1 4.9 3.3 5.1 3.4 10.4 6.9 15.7 10.3 1.5 1 2.1 2.3 2.1 4v3.6h91.2c.8 0 1.6 0 2.3.4 2.1.9 2.8 3.3 1.4 5.3-1.1 1.6-2.3 3.3-3.5 4.9-5.8 8.1-11.7 16.3-17.4 24.4-5 7.1-10.1 14.2-15.2 21.3-1.1 1.6-2.6 2.5-4.8 2.5h-54c0 .1-.1.3-.1.4v8.8c0 .5 0 .8.6.9 2.3.5 4 1.9 5.5 3.5.4.4.8.5 1.3.5H84c.5 0 .9-.3 1.3-.6 2.9-3.3 6.6-4.6 10.9-3.6 4.4 1.1 7.1 4 8 8.3 1.3 6-2.4 11.5-8.4 12.9-5.3 1.1-10.9-2.3-12.3-7.6-.1-.5-.3-.8-.9-.8h-30c0-.5 0-.5-.2-.5zm40.5-73.2v16.5h21.3c.4 0 .8-.3 1-.6 2.6-3.6 5.4-7.4 8-11.2 1.1-1.6 2.3-3.1 3.5-4.9-11.2.2-22.5.2-33.8.2zm-28.1 42h19.8V66.8H64.8v17.3zm19.8-25.3V42.3H64.8v16.5h19.8zm-27.9 8H44.5v17.3h12.2V66.8zm-12.3-8.1h12.3V42.1H44.4v16.6zm48.5 25.4h3.3c.5 0 .8-.1 1.1-.5 3.9-5.5 7.6-10.9 11.5-16.4.1-.1.1-.3.3-.5H92.9v17.4z"
+              />
+            </svg>
+          </a-badge>
+        </NuxtLink>
+        <a-tooltip
+          color="white"
+          placement="bottom"
+        >
+          <template v-if="isAuthenticated" #title>
+            <button class="text-[var(--mainTxt)] cursor-pointer" @click="logout">
+              登出
+            </button>
+          </template>
+          <button
+            aria-label="會員中心"
+            class="w-[43px] aspect-[43/38] navFull:h-[27px] navFull:w-[30.76px] navFull:mr-0 transition-all duration-300 hover:scale-120 text-[var(--mainTxt)] hover:text-[var(--mainRed)] leading-none bg-transparent appearance-none border-none p-0 cursor-pointer"
+            :class="[ route.path === '/user' ? '!text-[var(--mainRed)]' : '!text-[var(--mainTxt)]' ]"
+            @click="handleUserIconClick"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              version="1.2"
+              baseProfile="tiny"
+              viewBox="0 0 155 136"
+              class="pointer-events-none"
+              fill="currentColor"
+              overflow="visible"
+              xml:space="preserve"
+            >
+              <path d="M33.4 116.6h88.2c-.1-1.1-.1-2.1-.2-3.2-.4-4.3-.9-8.5-2-12.6-2.2-8.9-7.3-16-14.5-21.6l-1.5-1.2c-1.7-1.5-2.1-3.7-.9-5.4 1.2-1.8 3.6-2.4 5.6-1.4 2.5 1.3 4.6 3.2 6.7 5.2 7.3 7 11.8 15.6 14.1 25.5 1.3 5.5 1.9 11.1 2 16.8.1 1.7-.2 3.2-1.3 4.6-1.3 1.6-2.9 2.3-4.9 2.3H29.9c-3.2 0-5.8-2.4-5.8-5.5-.1-8.6.8-17.1 3.7-25.2 3.9-10.8 11-18.9 20.9-24.7 3.6-2.1 7.3-3.7 11.2-4.9.2-.1.4-.1.6-.2-5.9-3.5-10.1-8.3-12.6-14.5-2-5-2.7-10.2-1.8-15.5 2.1-12.7 9.7-20.7 21.7-24.5 10.9-3.5 20.8-.8 29.5 6.3 5.9 4.8 9.4 11.2 10.4 18.7 1.1 8.2-.9 15.7-6.1 22.2-5.5 6.9-12.8 10.7-21.5 11.9-2.6.4-5.2.4-7.8.7-9.5 1.1-17.9 4.6-25.2 10.9-6.9 6-10.9 13.6-12.3 22.5-.6 4-.9 8.1-1.4 12.2v.6zm65.7-77.4c0-12.5-9.9-22.2-22.5-22.2-12.4 0-22.1 9.8-22.1 22s9.9 21.8 22.4 21.8c12.2-.1 22.2-9.8 22.2-21.6z" />
+            </svg>
+          </button>
+        </a-tooltip>
+      </div>
+    </div>
+  </header>
+  <div class="min-h-[70px]" />
+  <LogInModal v-model="showLoginModal" />
+</template>
+
+<style scoped>
+.hamburger[aria-expanded="true"]:before {
+  top: 24px;
+  box-shadow: 0px 10px 0px #ff00;
+  transform: rotate(45deg);
+  transition:
+    box-shadow 0.3s 0s,
+    top 0.3s 0.3s,
+    transform 0.3s 0.6s;
+}
+
+.hamburger[aria-expanded="true"]:after {
+  bottom: 23px;
+  transform: rotate(-45deg);
+  transition:
+    bottom 0.3s 0.3s,
+    transform 0.3s 0.6s;
+}
+
+.hamburger:before,
+.hamburger:after {
+  content: "";
+  position: absolute;
+  width: 30px;
+  height: 2.3px;
+  background-color: var(--mainTxt);
+  right: 0;
+  left: 0;
+  margin: auto;
+  transform: rotate(0deg);
+}
+
+.hamburger:before {
+  top: 15px;
+  box-shadow: 0px 10px 0px var(--mainTxt);
+  transition:
+    box-shadow 0.3s 0.6s,
+    top 0.3s 0.3s,
+    transform 0.3s 0s;
+}
+
+.hamburger:after {
+  bottom: 12px;
+  transition:
+    bottom 0.3s 0.3s,
+    transform 0.3s 0s;
+}
+
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+@keyframes logoShine {
+  0% { left: -20%; }
+  100% { left: 120%; }
+}
+
+.shine:hover::after {
+  animation: logoShine 1.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+</style>
+
