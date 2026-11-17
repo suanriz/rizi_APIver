@@ -15,6 +15,8 @@ export default defineNuxtConfig({
   runtimeConfig: {
     public: {
       apiBase: process.env.NUXT_PUBLIC_API_BASE || 'https://rizi-be.onrender.com',
+      emailServiceId: process.env.NUXT_PUBLIC_EMAIL_SERVICE_ID || '',
+      emailPublicKey: process.env.NUXT_PUBLIC_EMAIL_PUBLIC_KEY || '',
     }
   },
   antd: {
