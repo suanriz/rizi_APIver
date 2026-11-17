@@ -76,18 +76,18 @@ export const CONTACT_OPTIONS: OptionType[] = [
 
 export const CONTACT_INFO: ContactInfoType[][] = [
   [
-    { name: '隱私政策', link: '/contact' },
-    { name: '常見問題', link: '/contact' },
-    { name: '加入我們', link: '/contact' },
+    { name: '隱私政策', link: '/' },
+    { name: '常見問題', link: '/' },
+    { name: '加入我們', link: '/' },
   ],
   [
-    { name: '加盟資訊', link: '/contact' },
-    { name: '企業採購', link: '/contact' },
-    { name: '門市查詢', link: '/contact' },
+    { name: '加盟資訊', link: '/' },
+    { name: '企業採購', link: '/' },
+    { name: '門市查詢', link: '/' },
   ],
   [
-    { name: '購物說明', link: '/contact' },
-    { name: '會員權益', link: '/contact' },
+    { name: '購物說明', link: '/' },
+    { name: '會員權益', link: '/' },
   ],
 ]
 
